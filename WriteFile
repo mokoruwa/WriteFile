@@ -1,0 +1,30 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Define the file path
+        string filePath = @"C:\example.txt";
+
+        // Define the content to write
+        string content = "Hello, this is a test file written to C:\\ drive.";
+
+        try
+        {
+            // Write the content to the file
+            File.WriteAllText(filePath, content);
+
+            Console.WriteLine("File written successfully to: " + filePath);
+        }
+        catch (UnauthorizedAccessException)
+        {
+            Console.WriteLine("Error: Access to the path is denied. Try running the application as an administrator.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An error occurred: " + ex.Message);
+        }
+    }
+}
